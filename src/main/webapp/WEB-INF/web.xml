@@ -49,4 +49,14 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReservationRoom</display-name>
+    <servlet-name>ReservationRoom</servlet-name>
+    <servlet-class>servlet.ReservationRoom</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReservationRoom</servlet-name>
+    <url-pattern>/ReservationRoom</url-pattern>
+  </servlet-mapping>
 </web-app>
