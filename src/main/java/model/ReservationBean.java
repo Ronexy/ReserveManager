@@ -1,10 +1,16 @@
 package model;
 
 
+import java.security.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class ReservationBean {
+	private int reservationId;
+	private Timestamp reservationTimestamp;
+	private Timestamp latestUpdateTimestamp;
+	private String cancelReason;
+	private String reservationStatus; 
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalTime startTime;
@@ -15,7 +21,47 @@ public class ReservationBean {
     private int roomId;
     private EquipmentBean equipment;
 
-    // 各フィールドのgetterとsetterを定義します
+    public int getReservationId() {
+		return reservationId;
+	}
+
+	public Timestamp getReservationTimestamp() {
+		return reservationTimestamp;
+	}
+
+	public Timestamp getLatestUpdateTimestamp() {
+		return latestUpdateTimestamp;
+	}
+
+	public String getCancelReason() {
+		return cancelReason;
+	}
+
+	public String getReservationStatus() {
+		return reservationStatus;
+	}
+
+	public void setReservationId(int reservationId) {
+		this.reservationId = reservationId;
+	}
+
+	public void setReservationTimestamp(Timestamp reservationTimestamp) {
+		this.reservationTimestamp = reservationTimestamp;
+	}
+
+	public void setLatestUpdateTimestamp(Timestamp latestUpdateTimestamp) {
+		this.latestUpdateTimestamp = latestUpdateTimestamp;
+	}
+
+	public void setCancelReason(String cancelReason) {
+		this.cancelReason = cancelReason;
+	}
+
+	public void setReservationStatus(String reservationStatus) {
+		this.reservationStatus = reservationStatus;
+	}
+
+	// 各フィールドのgetterとsetterを定義します
     // 例：
     public LocalDate getStartDate() {
         return startDate;
