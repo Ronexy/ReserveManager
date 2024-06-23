@@ -17,7 +17,11 @@ public class EquipmentBean {
         this.whiteboard = whiteboard;
     }
 
-    // ゲッターとセッター
+    public EquipmentBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
+	// ゲッターとセッター
     public int getEquipmentId() {
         return equipmentId;
     }
