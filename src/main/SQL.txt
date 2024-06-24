@@ -1,0 +1,57 @@
+7日以内の予約状態個数
+SELECT COUNT(*)
+FROM public.reservationdetail
+WHERE start_day BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '7 days'
+AND reservation_status = 'reserved'
+
+各部屋の当日予約データ
+SELECT *
+FROM public.reservationdetail
+WHERE room_id = '3' AND start_day = '2025-07-02'
+
+当日予約数確認
+SELECT COUNT(*)
+FROM reservationdetail
+WHERE start_day = '2025-07-02'
+
+当日の予約で備品オーバーが存在するか
+WITH equipment_totals AS (
+    SELECT 
+        SUM(e.microphone) AS total_microphone,
+        SUM(e.podium) AS total_podium,
+        SUM(e.screen) AS total_screen,
+        SUM(e.lcd_projector) AS total_lcd_projector,
+        SUM(e.whiteboard) AS total_whiteboard
+    FROM public.reservationdetail rd
+    JOIN public.equipment e ON rd.equipment_id = e.equipment_id
+    WHERE rd.start_day = '2025-07-02'
+)
+SELECT
+    total_microphone > 15 AS microphone,
+    total_podium > 15 AS podium,
+    total_screen > 15 AS screen,
+    total_lcd_projector > 15 AS lcd_projector,
+    total_whiteboard > 15 AS whiteboard
+FROM equipment_totals;
+
+予約全体で備品オーバーが発生する場合はその日付を返す
+WITH equipment_totals AS (
+    SELECT 
+        rd.start_day,
+        SUM(e.microphone) AS total_microphone,
+        SUM(e.podium) AS total_podium,
+        SUM(e.screen) AS total_screen,
+        SUM(e.lcd_projector) AS total_lcd_projector,
+        SUM(e.whiteboard) AS total_whiteboard
+    FROM public.reservationdetail rd
+    JOIN public.equipment e ON rd.equipment_id = e.equipment_id
+    GROUP BY rd.start_day
+)
+SELECT start_day
+FROM equipment_totals
+WHERE total_microphone > 15
+   OR total_podium > 15
+   OR total_screen > 15
+   OR total_lcd_projector > 15
+   OR total_whiteboard > 15
+ORDER BY start_day ASC;

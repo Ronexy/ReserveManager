@@ -69,4 +69,14 @@
     <servlet-name>Callender</servlet-name>
     <url-pattern>/Callender</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TimeTable</display-name>
+    <servlet-name>TimeTable</servlet-name>
+    <servlet-class>servlet.TimeTable</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TimeTable</servlet-name>
+    <url-pattern>/TimeTable</url-pattern>
+  </servlet-mapping>
 </web-app>
