@@ -59,4 +59,14 @@
     <servlet-name>ReservationRoom</servlet-name>
     <url-pattern>/ReservationRoom</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Callender</display-name>
+    <servlet-name>Callender</servlet-name>
+    <servlet-class>servlet.Callender</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Callender</servlet-name>
+    <url-pattern>/Callender</url-pattern>
+  </servlet-mapping>
 </web-app>
